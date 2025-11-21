@@ -2,6 +2,39 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### 1. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 2. Set Up OpenAI API Key
+
+To enable the AI chatbot, you need to add your OpenAI API key:
+
+1. **Get your OpenAI API key:**
+   - Go to [OpenAI Platform](https://platform.openai.com/api-keys)
+   - Sign up or log in
+   - Create a new API key
+
+2. **Create a `.env.local` file** in the root directory (`equityhub/`) and add:
+
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+   Replace `your_openai_api_key_here` with your actual API key from OpenAI.
+
+3. **Restart the development server** after adding the API key.
+
+> **Note:** The `.env.local` file is already in `.gitignore` and won't be committed to git. This keeps your API key secure.
+
+### 3. Run the Development Server
+
 First, run the development server:
 
 ```bash
