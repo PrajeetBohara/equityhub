@@ -28,8 +28,8 @@ export default function CoursesPage() {
       duration: '4 hours',
       level: 'Beginner',
       points: 125,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 9,
       icon: '🏡',
     },
@@ -40,8 +40,8 @@ export default function CoursesPage() {
       duration: '3.5 hours',
       level: 'Intermediate',
       points: 100,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 7,
       icon: '🏠',
     },
@@ -52,8 +52,8 @@ export default function CoursesPage() {
       duration: '2.5 hours',
       level: 'Beginner',
       points: 100,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 6,
       icon: '💵',
     },
@@ -64,8 +64,8 @@ export default function CoursesPage() {
       duration: '3 hours',
       level: 'Intermediate',
       points: 100,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 7,
       icon: '📋',
     },
@@ -76,8 +76,8 @@ export default function CoursesPage() {
       duration: '3 hours',
       level: 'Beginner',
       points: 75,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 6,
       icon: '💳',
     },
@@ -88,8 +88,8 @@ export default function CoursesPage() {
       duration: '3 hours',
       level: 'Intermediate',
       points: 100,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 6,
       icon: '📝',
     },
@@ -100,8 +100,8 @@ export default function CoursesPage() {
       duration: '2 hours',
       level: 'Beginner',
       points: 50,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 5,
       icon: '💰',
     },
@@ -112,8 +112,8 @@ export default function CoursesPage() {
       duration: '4 hours',
       level: 'Intermediate',
       points: 100,
-      completed: false,
-      progress: 0,
+      completed: true,
+      progress: 100,
       modules: 8,
       icon: '📈',
     },
@@ -176,7 +176,7 @@ export default function CoursesPage() {
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
             Homeownership & Financial Literacy Courses
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
@@ -189,18 +189,18 @@ export default function CoursesPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Courses Completed</p>
-                  <p className="text-3xl font-bold text-purple-600 dark:text-purple-400">{completedCourses}/{courses.length}</p>
+                  <p className="text-3xl font-bold" style={{ color: '#A0CEFD' }}>{completedCourses}/{courses.length}</p>
                 </div>
-                <CheckCircle className="h-12 w-12 text-purple-600 dark:text-purple-400 opacity-20" />
+                <CheckCircle className="h-12 w-12 opacity-20" style={{ color: '#A0CEFD' }} />
               </div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Points Earned</p>
-                  <p className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">{totalPoints}</p>
+                  <p className="text-3xl font-bold" style={{ color: '#A0CEFD' }}>{totalPoints}</p>
                 </div>
-                <Award className="h-12 w-12 text-indigo-600 dark:text-indigo-400 opacity-20" />
+                <Award className="h-12 w-12 opacity-20" style={{ color: '#A0CEFD' }} />
               </div>
             </div>
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
@@ -257,18 +257,18 @@ export default function CoursesPage() {
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                       <div
-                        className="bg-gradient-to-r from-purple-600 to-indigo-600 h-2 rounded-full transition-all"
-                        style={{ width: `${course.progress}%` }}
+                        className="h-2 rounded-full transition-all"
+                        style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)', width: `${course.progress}%` }}
                       />
                     </div>
                   </div>
                 )}
 
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium" style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}>
                     {course.level}
                   </span>
-                  <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 flex items-center gap-1">
+                  <span className="text-sm font-semibold flex items-center gap-1" style={{ color: '#A0CEFD' }}>
                     <Award className="h-4 w-4" />
                     {course.points} pts
                   </span>
@@ -288,9 +288,10 @@ export default function CoursesPage() {
                     course.completed
                       ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 cursor-not-allowed'
                       : course.progress > 0
-                      ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90'
+                      ? 'text-white hover:opacity-90'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600'
                   }`}
+                  {...(course.progress > 0 && !course.completed && { style: { background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' } })}
                 >
                   {course.completed ? (
                     <>

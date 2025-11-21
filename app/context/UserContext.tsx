@@ -19,6 +19,7 @@ interface User {
   badges: Badge[];
   rank: number;
   level: string;
+  avatar?: string;
 }
 
 interface UserContextType {
@@ -52,13 +53,22 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         }
       }
     }
+    // Default user: Dubem with score that gives exactly 3 badges for screenshots
+    const defaultScore = 750; // This gives exactly 3 badges (First Steps, Bronze, Silver)
+    const defaultBadges = availableBadges.map(b => ({ 
+      ...b, 
+      earned: defaultScore >= b.scoreRequired,
+      earnedDate: defaultScore >= b.scoreRequired ? new Date().toISOString() : undefined
+    }));
+    
     return {
-      id: '1',
-      name: 'User',
-      score: 0,
-      badges: availableBadges.map(b => ({ ...b, earned: false })),
-      rank: 0,
-      level: 'Beginner',
+      id: 'dubem',
+      name: 'Dubem',
+      score: defaultScore,
+      badges: defaultBadges,
+      rank: 1,
+      level: defaultScore >= 5000 ? 'Master' : defaultScore >= 2500 ? 'Expert' : defaultScore >= 1000 ? 'Advanced' : defaultScore >= 500 ? 'Intermediate' : 'Beginner+',
+      avatar: '👤', // User avatar emoji
     };
   });
 
@@ -112,22 +122,151 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateLeaderboard = () => {
-    // Mock leaderboard data - in real app, this would come from an API
+    // Mock leaderboard data with proxy users for screenshots
+    const getBadgesForScore = (score: number): Badge[] => {
+      return availableBadges.map(badge => ({
+        ...badge,
+        earned: score >= badge.scoreRequired,
+        earnedDate: score >= badge.scoreRequired ? new Date().toISOString() : undefined
+      }));
+    };
+
+    const getLevelForScore = (score: number): string => {
+      if (score >= 5000) return 'Master';
+      if (score >= 2500) return 'Expert';
+      if (score >= 1000) return 'Advanced';
+      if (score >= 500) return 'Intermediate';
+      if (score >= 200) return 'Beginner+';
+      return 'Beginner';
+    };
+
     const mockUsers: User[] = [
-      { id: '1', name: 'You', score: user?.score || 0, badges: user?.badges || [], rank: 1, level: user?.level || 'Beginner' },
-      { id: '2', name: 'Marcus J.', score: 3500, badges: availableBadges.slice(0, 4).map(b => ({ ...b, earned: true })), rank: 2, level: 'Expert' },
-      { id: '3', name: 'Keisha W.', score: 2800, badges: availableBadges.slice(0, 4).map(b => ({ ...b, earned: true })), rank: 3, level: 'Expert' },
-      { id: '4', name: 'David B.', score: 1800, badges: availableBadges.slice(0, 3).map(b => ({ ...b, earned: true })), rank: 4, level: 'Advanced' },
-      { id: '5', name: 'Aisha T.', score: 1200, badges: availableBadges.slice(0, 3).map(b => ({ ...b, earned: true })), rank: 5, level: 'Advanced' },
+      // Current user (Dubem) - #1 highest score
+      { 
+        id: 'dubem', 
+        name: 'Dubem', 
+        score: user?.id === 'dubem' ? (user?.score || 750) : 750, 
+        badges: user?.id === 'dubem' ? (user?.badges || getBadgesForScore(750)) : getBadgesForScore(750), 
+        rank: 1, 
+        level: user?.id === 'dubem' ? (user?.level || getLevelForScore(750)) : getLevelForScore(750),
+        avatar: user?.id === 'dubem' ? (user?.avatar || '👤') : '👤',
+      },
+      // Francis - #2
+      { 
+        id: 'francis', 
+        name: 'Francis', 
+        score: 650, 
+        badges: getBadgesForScore(650), 
+        rank: 2, 
+        level: getLevelForScore(650),
+        avatar: '👤',
+      },
+      // Prajeet - #3
+      { 
+        id: 'prajeet', 
+        name: 'Prajeet', 
+        score: 550, 
+        badges: getBadgesForScore(550), 
+        rank: 3, 
+        level: getLevelForScore(550),
+        avatar: '👤',
+      },
+      // Grace - #4
+      { 
+        id: 'grace', 
+        name: 'Grace', 
+        score: 450, 
+        badges: getBadgesForScore(450), 
+        rank: 4, 
+        level: getLevelForScore(450),
+        avatar: '👤',
+      },
+      // Chiamanda - #5
+      { 
+        id: 'chiamanda', 
+        name: 'Chiamanda', 
+        score: 350, 
+        badges: getBadgesForScore(350), 
+        rank: 5, 
+        level: getLevelForScore(350),
+        avatar: '👤',
+      },
     ].sort((a, b) => b.score - a.score)
     .map((u, idx) => ({ ...u, rank: idx + 1 }));
 
     setLeaderboard(mockUsers);
   };
 
-  const getLeaderboard = () => {
+  const getLeaderboard = (): User[] => {
+    // Create and return leaderboard directly
+    const getBadgesForScore = (score: number): Badge[] => {
+      return availableBadges.map(badge => ({
+        ...badge,
+        earned: score >= badge.scoreRequired,
+        earnedDate: score >= badge.scoreRequired ? new Date().toISOString() : undefined
+      }));
+    };
+
+    const getLevelForScore = (score: number): string => {
+      if (score >= 5000) return 'Master';
+      if (score >= 2500) return 'Expert';
+      if (score >= 1000) return 'Advanced';
+      if (score >= 500) return 'Intermediate';
+      if (score >= 200) return 'Beginner+';
+      return 'Beginner';
+    };
+
+    const mockUsers: User[] = [
+      { 
+        id: 'dubem', 
+        name: 'Dubem', 
+        score: user?.id === 'dubem' ? (user?.score || 750) : 750, 
+        badges: user?.id === 'dubem' ? (user?.badges || getBadgesForScore(750)) : getBadgesForScore(750), 
+        rank: 1, 
+        level: user?.id === 'dubem' ? (user?.level || getLevelForScore(750)) : getLevelForScore(750),
+        avatar: user?.id === 'dubem' ? (user?.avatar || '👤') : '👤',
+      },
+      { 
+        id: 'francis', 
+        name: 'Francis', 
+        score: 650, 
+        badges: getBadgesForScore(650), 
+        rank: 2, 
+        level: getLevelForScore(650),
+        avatar: '👤',
+      },
+      { 
+        id: 'prajeet', 
+        name: 'Prajeet', 
+        score: 550, 
+        badges: getBadgesForScore(550), 
+        rank: 3, 
+        level: getLevelForScore(550),
+        avatar: '👤',
+      },
+      { 
+        id: 'grace', 
+        name: 'Grace', 
+        score: 450, 
+        badges: getBadgesForScore(450), 
+        rank: 4, 
+        level: getLevelForScore(450),
+        avatar: '👤',
+      },
+      { 
+        id: 'chiamanda', 
+        name: 'Chiamanda', 
+        score: 350, 
+        badges: getBadgesForScore(350), 
+        rank: 5, 
+        level: getLevelForScore(350),
+        avatar: '👤',
+      },
+    ].sort((a, b) => b.score - a.score)
+    .map((u, idx) => ({ ...u, rank: idx + 1 }));
+
     updateLeaderboard();
-    return leaderboard;
+    return mockUsers;
   };
 
   const setUser = (newUser: User | null) => {

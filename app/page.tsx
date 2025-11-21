@@ -9,7 +9,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF, #A0CEFD)' }}>
             Bridge the Financial Gap
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -18,14 +18,16 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/chatbot"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg"
+              className="inline-flex items-center justify-center px-8 py-4 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg"
+              style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
             >
               Start Learning
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
             <Link
               href="/courses"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 rounded-lg font-semibold transition-colors hover:bg-[#E4F2FF]"
+              style={{ borderColor: '#A0CEFD', color: '#A0CEFD' }}
             >
               Browse Courses
             </Link>
@@ -37,8 +39,8 @@ export default function Home() {
       <section className="container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
-              <MessageCircle className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: '#E4F2FF' }}>
+              <MessageCircle className="h-6 w-6" style={{ color: '#A0CEFD' }} />
             </div>
             <h3 className="text-xl font-semibold mb-2">AI Chatbot</h3>
             <p className="text-gray-600 dark:text-gray-400">
@@ -47,8 +49,8 @@ export default function Home() {
           </div>
 
           <div className="p-6 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mb-4">
-              <BookOpen className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: '#E4F2FF' }}>
+              <BookOpen className="h-6 w-6" style={{ color: '#A0CEFD' }} />
             </div>
             <h3 className="text-xl font-semibold mb-2">Financial Courses</h3>
             <p className="text-gray-600 dark:text-gray-400">
@@ -100,7 +102,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20">
-        <div className="max-w-3xl mx-auto text-center p-12 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+        <div className="max-w-3xl mx-auto text-center p-12 rounded-2xl text-white" style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Start Your Financial Journey?
           </h2>
@@ -109,7 +111,8 @@ export default function Home() {
           </p>
           <Link
             href="/chatbot"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+            style={{ color: '#A0CEFD' }}
           >
             Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />

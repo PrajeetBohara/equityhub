@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { MessageCircle, Send, Search, User, Award, Crown, Star, Trophy } from 'lucide-react';
 import { useUser } from '../context/UserContext';
 
@@ -25,60 +26,69 @@ interface Mentor {
 
 export default function MessagingPage() {
   const { user } = useUser();
+  const searchParams = useSearchParams();
   const [selectedMentor, setSelectedMentor] = useState<string | null>(null);
   const [messages, setMessages] = useState<{ [key: string]: Message[] }>({});
   const [input, setInput] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Check for user query parameter on mount
+  useEffect(() => {
+    const userId = searchParams.get('user');
+    if (userId) {
+      setSelectedMentor(userId);
+    }
+  }, [searchParams]);
+
   const mentors: Mentor[] = [
     {
-      id: '1',
-      name: 'Marcus Johnson',
-      level: 'Expert',
-      score: 3500,
-      badges: 5,
-      rank: 2,
-      specialties: ['Investing', 'Home Ownership'],
-      available: true,
-    },
-    {
-      id: '2',
-      name: 'Keisha Williams',
-      level: 'Expert',
-      score: 2800,
-      badges: 4,
-      rank: 3,
-      specialties: ['Budgeting', 'Credit'],
-      available: true,
-    },
-    {
-      id: '3',
-      name: 'David Brown',
-      level: 'Advanced',
-      score: 1800,
-      badges: 3,
-      rank: 4,
-      specialties: ['Retirement Planning'],
-      available: false,
-    },
-    {
-      id: '4',
-      name: 'Aisha Thompson',
-      level: 'Advanced',
-      score: 1200,
-      badges: 3,
-      rank: 5,
-      specialties: ['Business Finance', 'Entrepreneurship'],
-      available: true,
-    },
-    {
-      id: '5',
-      name: 'Jordan Davis',
+      id: 'dubem',
+      name: 'Dubem',
       level: 'Intermediate',
-      score: 850,
+      score: 750,
+      badges: 3,
+      rank: 1,
+      specialties: ['Home Ownership', 'Down Payment Strategies'],
+      available: true,
+    },
+    {
+      id: 'francis',
+      name: 'Francis',
+      level: 'Intermediate',
+      score: 650,
+      badges: 3,
+      rank: 2,
+      specialties: ['Financial Planning', 'Policy Analysis'],
+      available: true,
+    },
+    {
+      id: 'prajeet',
+      name: 'Prajeet',
+      level: 'Intermediate',
+      score: 550,
       badges: 2,
-      rank: 6,
-      specialties: ['Investment Basics'],
+      rank: 3,
+      specialties: ['Investment Basics', 'Retirement Planning'],
+      available: true,
+    },
+    {
+      id: 'grace',
+      name: 'Grace',
+      level: 'Intermediate',
+      score: 450,
+      badges: 2,
+      rank: 4,
+      specialties: ['Budgeting', 'Credit Building'],
+      available: true,
+    },
+    {
+      id: 'chiamanda',
+      name: 'Chiamanda',
+      level: 'Beginner+',
+      score: 350,
+      badges: 2,
+      rank: 5,
+      specialties: ['First-Time Homebuyer', 'Mortgage Options'],
       available: true,
     },
   ];
@@ -137,7 +147,7 @@ export default function MessagingPage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
             Connect with Experienced Learners
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -156,7 +166,9 @@ export default function MessagingPage() {
                   placeholder="Search mentors..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                 />
               </div>
             </div>
@@ -168,13 +180,14 @@ export default function MessagingPage() {
                   onClick={() => setSelectedMentor(mentor.id)}
                   className={`w-full text-left p-4 rounded-lg border transition-colors ${
                     selectedMentor === mentor.id
-                      ? 'bg-purple-100 dark:bg-purple-900/30 border-purple-300 dark:border-purple-700'
+                      ? 'border-2'
                       : 'bg-gray-50 dark:bg-gray-700/50 border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
+                  {...(selectedMentor === mentor.id && { style: { backgroundColor: '#E4F2FF', borderColor: '#A0CEFD' } })}
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
-                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-semibold">
+                      <div className="h-10 w-10 rounded-full flex items-center justify-center text-white font-semibold" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
                         {mentor.name.charAt(0)}
                       </div>
                       <div>
@@ -203,7 +216,7 @@ export default function MessagingPage() {
                     {mentor.specialties.map((specialty) => (
                       <span
                         key={specialty}
-                        className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs"
+                        className="px-2 py-1 rounded text-xs" style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}
                       >
                         {specialty}
                       </span>
@@ -224,7 +237,7 @@ export default function MessagingPage() {
                     const mentor = mentors.find((m) => m.id === selectedMentor);
                     return mentor ? (
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white font-semibold">
+                        <div className="h-10 w-10 rounded-full flex items-center justify-center text-white font-semibold" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
                           {mentor.name.charAt(0)}
                         </div>
                         <div>
@@ -254,26 +267,24 @@ export default function MessagingPage() {
                       }`}
                     >
                       <div
-                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
-                          message.from === 'You'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-indigo-600 text-white'
-                        }`}
+                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-white`}
+                        style={{ backgroundColor: '#A0CEFD' }}
                       >
                         {message.from === 'You' ? 'U' : message.from.charAt(0)}
                       </div>
                       <div
                         className={`max-w-[75%] rounded-2xl px-4 py-3 ${
                           message.from === 'You'
-                            ? 'bg-purple-600 text-white'
+                            ? 'text-white'
                             : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
                         }`}
+                        {...(message.from === 'You' && { style: { backgroundColor: '#A0CEFD' } })}
                       >
                         <p className="whitespace-pre-wrap break-words">{message.content}</p>
                         <p
                           className={`text-xs mt-1 ${
                             message.from === 'You'
-                              ? 'text-purple-100'
+                              ? 'text-white/80'
                               : 'text-gray-500 dark:text-gray-400'
                           }`}
                         >
@@ -297,13 +308,16 @@ export default function MessagingPage() {
                         }
                       }}
                       placeholder="Type your message..."
-                      className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                      className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                      onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                       rows={2}
                     />
                     <button
                       onClick={handleSend}
                       disabled={!input.trim()}
-                      className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                      className="px-6 py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                    style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
                     >
                       <Send className="h-5 w-5" />
                     </button>

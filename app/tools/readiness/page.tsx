@@ -75,8 +75,8 @@ export default function ReadinessCalculator() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-3">
-            <Calculator className="h-10 w-10 text-purple-600" />
+          <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent flex items-center gap-3" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
+            <Calculator className="h-10 w-10" style={{ color: '#A0CEFD' }} />
             Homeownership Readiness Calculator
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -99,7 +99,9 @@ export default function ReadinessCalculator() {
                   value={inputs.creditScore}
                   onChange={(e) => handleInputChange('creditScore', e.target.value)}
                   placeholder="e.g., 680"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="300"
                   max="850"
                 />
@@ -114,7 +116,9 @@ export default function ReadinessCalculator() {
                   value={inputs.monthlyIncome}
                   onChange={(e) => handleInputChange('monthlyIncome', e.target.value)}
                   placeholder="e.g., 5000"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="0"
                 />
               </div>
@@ -128,7 +132,9 @@ export default function ReadinessCalculator() {
                   value={inputs.monthlyDebt}
                   onChange={(e) => handleInputChange('monthlyDebt', e.target.value)}
                   placeholder="e.g., 800"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="0"
                 />
               </div>
@@ -142,7 +148,9 @@ export default function ReadinessCalculator() {
                   value={inputs.downPaymentSavings}
                   onChange={(e) => handleInputChange('downPaymentSavings', e.target.value)}
                   placeholder="e.g., 15000"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="0"
                 />
               </div>
@@ -156,7 +164,9 @@ export default function ReadinessCalculator() {
                   value={inputs.monthlySavings}
                   onChange={(e) => handleInputChange('monthlySavings', e.target.value)}
                   placeholder="e.g., 500"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="0"
                 />
               </div>
@@ -171,7 +181,9 @@ export default function ReadinessCalculator() {
                   onChange={(e) => handleInputChange('employmentYears', e.target.value)}
                   placeholder="e.g., 2"
                   step="0.5"
-                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                  className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                   min="0"
                 />
               </div>
@@ -200,7 +212,8 @@ export default function ReadinessCalculator() {
               <button
                 onClick={calculateReadiness}
                 disabled={loading || !inputs.creditScore || !inputs.monthlyIncome}
-                className="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
               >
                 {loading ? (
                   <>
@@ -235,7 +248,7 @@ export default function ReadinessCalculator() {
             ) : (
               <div className="space-y-6">
                 {/* Overall Score */}
-                <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-lg">
+                <div className="text-center p-6 rounded-lg" style={{ background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)' }}>
                   <div className="text-5xl font-bold mb-2">
                     <span className={getScoreColor(result.overallScore)}>
                       {result.overallScore}
@@ -261,8 +274,8 @@ export default function ReadinessCalculator() {
                         </div>
                         <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <div
-                            className="bg-gradient-to-r from-purple-600 to-indigo-600 h-2 rounded-full transition-all"
-                            style={{ width: `${value}%` }}
+                            className="h-2 rounded-full transition-all"
+                            style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)', width: `${value}%` }}
                           />
                         </div>
                       </div>
@@ -292,7 +305,7 @@ export default function ReadinessCalculator() {
                   <ul className="space-y-2">
                     {result.loanTypes.map((loan: string, idx: number) => (
                       <li key={idx} className="text-sm text-gray-700 dark:text-gray-300 flex items-start gap-2">
-                        <span className="text-purple-600 dark:text-purple-400">•</span>
+                        <span style={{ color: '#A0CEFD' }}>•</span>
                         <span>{loan}</span>
                       </li>
                     ))}
@@ -301,7 +314,8 @@ export default function ReadinessCalculator() {
 
                 <Link
                   href="/courses"
-                  className="block w-full text-center py-3 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg font-semibold hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors"
+                  className="block w-full text-center py-3 rounded-lg font-semibold transition-colors hover:bg-[#A0CEFD] hover:text-white"
+                  style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}
                 >
                   Explore Homeownership Courses →
                 </Link>

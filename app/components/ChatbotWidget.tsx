@@ -179,7 +179,8 @@ Would you like me to explain more or recommend specific courses?`;
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-2xl hover:shadow-purple-500/50 transition-all hover:scale-110 flex items-center justify-center group"
+          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full text-white shadow-2xl transition-all hover:scale-110 flex items-center justify-center group"
+          style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
           aria-label="Open chat"
         >
           <Bot className="h-7 w-7" />
@@ -195,7 +196,7 @@ Would you like me to explain more or recommend specific courses?`;
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-t-xl">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 text-white rounded-t-xl" style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
                 <Bot className="h-5 w-5" />
@@ -242,11 +243,11 @@ Would you like me to explain more or recommend specific courses?`;
                     }`}
                   >
                     <div
-                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm ${
-                        message.role === 'user'
-                          ? 'bg-purple-600 text-white'
-                          : 'bg-gradient-to-br from-purple-600 to-indigo-600 text-white'
-                      }`}
+                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm text-white`}
+                      {...(message.role === 'user' 
+                        ? { style: { backgroundColor: '#A0CEFD' } }
+                        : { style: { background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' } }
+                      )}
                     >
                       {message.role === 'user' ? (
                         <UserIcon className="h-4 w-4" />
@@ -257,9 +258,10 @@ Would you like me to explain more or recommend specific courses?`;
                     <div
                       className={`max-w-[75%] rounded-2xl px-3 py-2 text-sm ${
                         message.role === 'user'
-                          ? 'bg-purple-600 text-white'
+                          ? 'text-white'
                           : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600'
                       }`}
+                      {...(message.role === 'user' && { style: { backgroundColor: '#A0CEFD' } })}
                     >
                       <p className="whitespace-pre-wrap break-words">{message.content}</p>
                     </div>
@@ -267,7 +269,7 @@ Would you like me to explain more or recommend specific courses?`;
                 ))}
                 {isLoading && (
                   <div className="flex gap-2">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 text-white flex items-center justify-center">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full text-white flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
                       <Bot className="h-4 w-4" />
                     </div>
                     <div className="bg-white dark:bg-gray-700 rounded-2xl px-3 py-2">
@@ -299,13 +301,16 @@ Would you like me to explain more or recommend specific courses?`;
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Ask about homeownership, down payments, mortgages..."
-                    className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                    className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                    onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                    onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                     rows={2}
                   />
                   <button
                     onClick={handleSend}
                     disabled={!input.trim() || isLoading}
-                    className="px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                    className="px-4 py-2 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                    style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
                   >
                     <Send className="h-4 w-4" />
                   </button>
@@ -317,7 +322,8 @@ Would you like me to explain more or recommend specific courses?`;
                   </p>
                   <Link
                     href="/chatbot"
-                    className="text-xs text-purple-600 dark:text-purple-400 hover:underline"
+                    className="text-xs hover:underline"
+                    style={{ color: '#A0CEFD' }}
                   >
                     Open full chat →
                   </Link>

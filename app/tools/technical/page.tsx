@@ -8,8 +8,8 @@ export default function TechnicalDocumentation() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4 py-12 max-w-5xl">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-3">
-            <Code className="h-10 w-10 text-purple-600" />
+          <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent flex items-center gap-3" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
+            <Code className="h-10 w-10" style={{ color: '#A0CEFD' }} />
             Technical Implementation
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400">
@@ -20,7 +20,7 @@ export default function TechnicalDocumentation() {
         {/* AI Tools & Models */}
         <section className="mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
           <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
-            <Sparkles className="h-6 w-6 text-purple-600" />
+            <Sparkles className="h-6 w-6" style={{ color: '#A0CEFD' }} />
             1. AI Tools, Models & Frameworks
           </h2>
 
@@ -96,7 +96,7 @@ export default function TechnicalDocumentation() {
         {/* Architecture & Structure */}
         <section className="mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
           <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center gap-3">
-            <Network className="h-6 w-6 text-indigo-600" />
+            <Network className="h-6 w-6" style={{ color: '#A0CEFD' }} />
             2. Solution Architecture & Workflow
           </h2>
 
@@ -194,7 +194,7 @@ export default function TechnicalDocumentation() {
                     <span className="font-mono font-semibold">30% weight</span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                    <div className="bg-purple-600 h-2 rounded-full" style={{ width: '30%' }} />
+                    <div className="h-2 rounded-full" style={{ width: '30%', backgroundColor: '#A0CEFD' }} />
                   </div>
                   
                   <div className="flex justify-between">
@@ -202,7 +202,7 @@ export default function TechnicalDocumentation() {
                     <span className="font-mono font-semibold">25% weight</span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-                    <div className="bg-indigo-600 h-2 rounded-full" style={{ width: '25%' }} />
+                    <div className="h-2 rounded-full" style={{ width: '25%', backgroundColor: '#A0CEFD' }} />
                   </div>
                   
                   <div className="flex justify-between">
@@ -321,14 +321,14 @@ export default function TechnicalDocumentation() {
           </h2>
 
           <div className="space-y-4">
-            <div className="border-l-4 border-purple-600 pl-4">
+            <div className="border-l-4 pl-4" style={{ borderColor: '#A0CEFD' }}>
               <code className="text-sm font-mono text-gray-900 dark:text-white">POST /api/chat</code>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 AI chatbot endpoint. Processes conversational messages with OpenAI GPT-4o-mini.
               </p>
             </div>
 
-            <div className="border-l-4 border-indigo-600 pl-4">
+            <div className="border-l-4 pl-4" style={{ borderColor: '#A0CEFD' }}>
               <code className="text-sm font-mono text-gray-900 dark:text-white">POST /api/calculate-readiness</code>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 Homeownership readiness calculator. Uses weighted scoring algorithm to assess readiness.
@@ -354,7 +354,8 @@ export default function TechnicalDocumentation() {
         <div className="text-center">
           <Link
             href="/tools/readiness"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
           >
             Try Readiness Calculator
           </Link>

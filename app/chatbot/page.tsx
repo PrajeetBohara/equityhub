@@ -295,7 +295,7 @@ What would be most helpful for your homeownership journey?`;
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
             AI Homeownership Advisor
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
@@ -314,11 +314,11 @@ What would be most helpful for your homeownership journey?`;
                 }`}
               >
                 <div
-                  className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${
-                    message.role === 'user'
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gradient-to-br from-purple-600 to-indigo-600 text-white'
-                  }`}
+                  className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white`}
+                  {...(message.role === 'user' 
+                    ? { style: { backgroundColor: '#A0CEFD' } }
+                    : { style: { background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' } }
+                  )}
                 >
                   {message.role === 'user' ? (
                     <UserIcon className="h-5 w-5" />
@@ -329,15 +329,16 @@ What would be most helpful for your homeownership journey?`;
                 <div
                   className={`max-w-[75%] rounded-2xl px-4 py-3 ${
                     message.role === 'user'
-                      ? 'bg-purple-600 text-white'
+                      ? 'text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100'
                   }`}
+                  {...(message.role === 'user' && { style: { backgroundColor: '#A0CEFD' } })}
                 >
                   <p className="whitespace-pre-wrap break-words">{message.content}</p>
                   <p
                     className={`text-xs mt-2 ${
                       message.role === 'user'
-                        ? 'text-purple-100'
+                        ? 'text-white/80'
                         : 'text-gray-500 dark:text-gray-400'
                     }`}
                   >
@@ -348,7 +349,7 @@ What would be most helpful for your homeownership journey?`;
             ))}
             {isLoading && (
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 text-white flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full text-white flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
                   <Bot className="h-5 w-5" />
                 </div>
                 <div className="bg-gray-100 dark:bg-gray-700 rounded-2xl px-4 py-3">
@@ -371,13 +372,16 @@ What would be most helpful for your homeownership journey?`;
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Ask about first-time buyer programs, down payment assistance, credit for mortgages, housing policies, mortgage types, or any homeownership question..."
-                className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                className="flex-1 resize-none border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                 rows={2}
               />
               <button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-6 py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                style={{ background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}
               >
                 <Send className="h-5 w-5" />
               </button>

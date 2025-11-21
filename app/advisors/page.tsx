@@ -115,7 +115,7 @@ export default function AdvisorsPage() {
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-4 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
             Financial Advisors
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -132,7 +132,7 @@ export default function AdvisorsPage() {
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="h-16 w-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="h-16 w-16 rounded-full flex items-center justify-center text-white text-2xl font-bold" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
                     {advisor.name.split(' ').map((n) => n[0]).join('')}
                   </div>
                   <div>
@@ -167,7 +167,7 @@ export default function AdvisorsPage() {
                   {advisor.specialties.map((specialty) => (
                     <span
                       key={specialty}
-                      className="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded text-xs"
+                      className="px-2 py-1 rounded text-xs" style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}
                     >
                       {specialty}
                     </span>
@@ -183,21 +183,24 @@ export default function AdvisorsPage() {
               <div className="flex gap-2">
                 <button
                   onClick={() => handleContact(advisor, 'email')}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg font-semibold transition-opacity text-sm hover:opacity-90"
+                  style={{ backgroundColor: '#A0CEFD' }}
                 >
                   <Mail className="h-4 w-4" />
                   Email
                 </button>
                 <button
                   onClick={() => handleContact(advisor, 'phone')}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg font-semibold transition-opacity text-sm hover:opacity-90"
+                  style={{ backgroundColor: '#A0CEFD' }}
                 >
                   <Phone className="h-4 w-4" />
                   Call
                 </button>
                 <button
                   onClick={() => handleContact(advisor, 'message')}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-purple-600 text-purple-600 rounded-lg font-semibold hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 rounded-lg font-semibold transition-colors text-sm hover:bg-[#E4F2FF]"
+                  style={{ borderColor: '#A0CEFD', color: '#A0CEFD' }}
                 >
                   <MessageCircle className="h-4 w-4" />
                   Message
@@ -225,7 +228,8 @@ export default function AdvisorsPage() {
                   </div>
                   <a
                     href={`mailto:${selectedAdvisor.email}?subject=Financial%20Advisory%20Consultation`}
-                    className="block w-full text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors"
+                    className="block w-full text-center px-6 py-3 text-white rounded-lg font-semibold transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#A0CEFD' }}
                   >
                     Open Email Client
                   </a>
@@ -245,7 +249,8 @@ export default function AdvisorsPage() {
                   </p>
                   <a
                     href={`tel:${selectedAdvisor.phone}`}
-                    className="block w-full text-center px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors"
+                    className="block w-full text-center px-6 py-3 text-white rounded-lg font-semibold transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#A0CEFD' }}
                   >
                     Call Now
                   </a>
@@ -259,10 +264,13 @@ export default function AdvisorsPage() {
                   </p>
                   <textarea
                     placeholder="Type your message here..."
-                    className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                      className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 mb-4 focus:outline-none focus:ring-2 dark:bg-gray-700 dark:text-white"
+                      onFocus={(e) => { e.currentTarget.style.borderColor = '#A0CEFD'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = ''; }}
                     rows={4}
                   />
-                  <button className="w-full px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                  <button className="w-full px-6 py-3 text-white rounded-lg font-semibold transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: '#A0CEFD' }}>
                     Send Message
                   </button>
                 </div>
