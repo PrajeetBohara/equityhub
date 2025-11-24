@@ -69,7 +69,7 @@ export default function ProfilePage() {
           <div className="flex items-center gap-6 mb-6">
             {/* User Avatar */}
             <div className="flex-shrink-0 relative group">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-lg overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
+              <div className="w-24 h-24 rounded-full flex items-center justify-center text-4xl font-bold text-white shadow-lg overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #5BA8FF, #8BC5FF)' }}>
                 {avatarPreview || (currentUser?.avatar && currentUser.avatar.startsWith('data:image')) ? (
                   <img src={avatarPreview || currentUser?.avatar} alt={currentUser?.name || 'User'} className="w-full h-full object-cover" />
                 ) : (
@@ -94,7 +94,7 @@ export default function ProfilePage() {
             </div>
             {/* User Info */}
             <div className="flex-1">
-              <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #A0CEFD, #E4F2FF)' }}>
+              <h1 className="text-4xl font-bold mb-2 bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(to right, #5BA8FF, #8BC5FF)' }}>
                 {currentUser?.name || 'Dubem'}'s Profile
               </h1>
               <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -113,24 +113,24 @@ export default function ProfilePage() {
               <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">Your Stats</h2>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)' }}>
+                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)' }}>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium truncate">Total Score</p>
-                  <p className="text-2xl sm:text-3xl font-bold truncate" style={{ color: '#A0CEFD' }}>{currentUser?.score || 750}</p>
+                  <p className="text-2xl sm:text-3xl font-bold truncate" style={{ color: '#5BA8FF' }}>{currentUser?.score || 750}</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">points</p>
                 </div>
-                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)' }}>
+                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)' }}>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium truncate">Level</p>
-                  <p className="text-xl sm:text-2xl font-bold break-words line-clamp-2" style={{ color: '#A0CEFD' }}>{currentUser?.level || 'Intermediate'}</p>
+                  <p className="text-xl sm:text-2xl font-bold break-words line-clamp-2" style={{ color: '#5BA8FF' }}>{currentUser?.level || 'Intermediate'}</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">current level</p>
                 </div>
-                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)' }}>
+                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)' }}>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium truncate">Badges</p>
-                  <p className="text-2xl sm:text-3xl font-bold" style={{ color: '#A0CEFD' }}>{earnedBadges.length}</p>
+                  <p className="text-2xl sm:text-3xl font-bold" style={{ color: '#5BA8FF' }}>{earnedBadges.length}</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 break-words">of {currentUser?.badges.length || 6}</p>
                 </div>
-                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)' }}>
+                <div className="bg-gradient-to-br p-4 rounded-lg overflow-hidden min-h-[120px] flex flex-col justify-between" style={{ background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)' }}>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-2 font-medium truncate">Rank</p>
-                  <p className="text-2xl sm:text-3xl font-bold truncate" style={{ color: '#A0CEFD' }}>#{currentUser?.rank || 1}</p>
+                  <p className="text-2xl sm:text-3xl font-bold truncate" style={{ color: '#5BA8FF' }}>#{currentUser?.rank || 1}</p>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1 break-words">leaderboard</p>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function ProfilePage() {
                   <div
                     className="h-3 rounded-full transition-all"
                     style={{
-                      background: 'linear-gradient(to right, #A0CEFD, #E4F2FF)',
+                      background: 'linear-gradient(to right, #5BA8FF, #8BC5FF)',
                       width: `${(() => {
                         const current = currentUser?.score || 750;
                         let next: number;
@@ -220,14 +220,14 @@ export default function ProfilePage() {
                         key={badge.id}
                         className="bg-gradient-to-br rounded-lg p-4 border-2 shadow-md transition-all hover:scale-105"
                         style={{ 
-                          background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)', 
-                          borderColor: '#A0CEFD',
+                          background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)', 
+                          borderColor: '#5BA8FF',
                         }}
                       >
                         <div className="text-4xl mb-2 text-center">{badge.icon}</div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-1 text-center">{badge.name}</h4>
                         <p className="text-xs text-gray-700 dark:text-gray-300 mb-2 text-center font-medium">{badge.description}</p>
-                        <p className="text-xs font-semibold text-center" style={{ color: '#A0CEFD' }}>
+                        <p className="text-xs font-semibold text-center" style={{ color: '#5BA8FF' }}>
                           Need {badge.scoreRequired - (currentUser?.score || 750)} more points
                         </p>
                       </div>
@@ -300,13 +300,13 @@ export default function ProfilePage() {
                     key={advisor.id}
                     className="bg-gradient-to-br p-5 rounded-lg border-2 hover:shadow-lg transition-all"
                     style={{
-                      background: 'linear-gradient(to bottom right, #E4F2FF, #A0CEFD)',
-                      borderColor: '#A0CEFD',
+                      background: 'linear-gradient(to bottom right, #8BC5FF, #5BA8FF)',
+                      borderColor: '#5BA8FF',
                     }}
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md" style={{ background: 'linear-gradient(to bottom right, #A0CEFD, #E4F2FF)' }}>
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md" style={{ background: 'linear-gradient(to bottom right, #5BA8FF, #8BC5FF)' }}>
                           {advisor.name.split(' ').map((n: string) => n[0]).join('')}
                         </div>
                         <div>
@@ -390,9 +390,9 @@ export default function ProfilePage() {
                         ? 'border-2'
                         : 'bg-gray-50 dark:bg-gray-700/50'
                     }`}
-                    {...(player.id === currentUser?.id && { style: { backgroundColor: '#E4F2FF', borderColor: '#A0CEFD' } })}
+                    {...(player.id === currentUser?.id && { style: { backgroundColor: '#8BC5FF', borderColor: '#5BA8FF' } })}
                   >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm flex-shrink-0" style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}>
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full font-bold text-sm flex-shrink-0" style={{ backgroundColor: '#8BC5FF', color: '#5BA8FF' }}>
                       {player.rank}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -425,7 +425,7 @@ export default function ProfilePage() {
               </div>
 
               {currentUser && currentUser.rank > 10 && (
-                <div className="mt-4 p-3 rounded-lg border-2" style={{ backgroundColor: '#E4F2FF', borderColor: '#A0CEFD' }}>
+                <div className="mt-4 p-3 rounded-lg border-2" style={{ backgroundColor: '#8BC5FF', borderColor: '#5BA8FF' }}>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm" style={{ backgroundColor: '#A0CEFD' }}>
@@ -451,16 +451,16 @@ export default function ProfilePage() {
               <div className="space-y-2">
                 <Link
                   href="/courses"
-                  className="block w-full text-left px-4 py-3 rounded-lg transition-colors hover:bg-[#A0CEFD] hover:text-white"
-                  style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}
+                  className="block w-full text-left px-4 py-3 rounded-lg transition-colors hover:bg-[#5BA8FF] hover:text-white"
+                  style={{ backgroundColor: '#8BC5FF', color: '#5BA8FF' }}
                 >
                   <Target className="h-4 w-4 inline mr-2" />
                   View Courses
                 </Link>
                 <Link
                   href="/messaging"
-                  className="block w-full text-left px-4 py-3 rounded-lg transition-colors hover:bg-[#A0CEFD] hover:text-white"
-                  style={{ backgroundColor: '#E4F2FF', color: '#A0CEFD' }}
+                  className="block w-full text-left px-4 py-3 rounded-lg transition-colors hover:bg-[#5BA8FF] hover:text-white"
+                  style={{ backgroundColor: '#8BC5FF', color: '#5BA8FF' }}
                 >
                   <MessageCircle className="h-4 w-4 inline mr-2" />
                   Connect with Others
